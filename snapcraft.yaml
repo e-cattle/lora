@@ -1,6 +1,6 @@
 name: bigboxx-lora
 base: core18
-version: 0.1.4
+version: git
 summary: LoRa Gateway driver of middleware from e-Cattle platform for livestock farms
 description: |
   e-Cattle BigBoxx is a middleware to receive, rank, segment, persist and provide sensory data
