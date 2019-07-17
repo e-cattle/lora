@@ -1,0 +1,15 @@
+#!/bin/sh -e
+
+id="$(snapctl get id)"
+
+echo "Starting configuration..."
+
+echo $id >> $SNAP_DATA/id
+
+cd $SNAP/forwarder/lora_pkt_fwd
+
+pwd
+
+./update_gwid.sh local_conf.json
+
+echo "Done!"
