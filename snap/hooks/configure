@@ -8,7 +8,7 @@ echo "-- $NOW --" >> $LOG
 
 echo "Starting configuration..." >> $LOG
 
-cd $SNAP/forwarder/lora_pkt_fwd
+cd $SNAP
 
 pwd >> $LOG
 

@@ -14,7 +14,7 @@ environment:
 
 apps:
   forwarder:
-    command: ./forwarder/lora_pkt_fwd/lora_pkt_fwd
+    command: ./lora_pkt_fwd
     daemon: simple
     restart-condition: always
     plugs: [home,network,network-bind,spi]
@@ -31,7 +31,6 @@ parts:
       - build-essential
     override-build: |
       make all
-      cp -rf $SNAPCRAFT_PART_INSTALL/../build $SNAPCRAFT_PRIME/driver
   
   forwarder:
     source: https://github.com/Lora-net/packet_forwarder.git
@@ -42,4 +41,11 @@ parts:
     override-build: |
       export LGW_PATH="$SNAPCRAFT_PART_INSTALL/../../driver/build/libloragw"
       make all
-      cp -rf $SNAPCRAFT_PART_INSTALL/../build $SNAPCRAFT_PRIME/forwarder
+      cp -rf $SNAPCRAFT_PART_INSTALL/../build/lora_pkt_fwd/* $SNAPCRAFT_PRIME/
+  
+  helper:
+    plugin: nil
+    source: .
+    after: [forwarder]
+    override-build: |
+      cp ./global_conf.json $SNAPCRAFT_PRIME/
