@@ -1,15 +1,17 @@
 #!/bin/sh -e
 
-id="$(snapctl get id)"
+NOW=$(date +"%d-%m-%Y %T")
 
-echo "Starting configuration..."
+LOG=$SNAP_DATA/configure.log
 
-echo $id >> $SNAP_DATA/id
+echo "-- $NOW --" >> $LOG
+
+echo "Starting configuration..." >> $LOG
 
 cd $SNAP/forwarder/lora_pkt_fwd
 
-pwd
+pwd >> $LOG
 
-./update_gwid.sh local_conf.json
+./update_gwid.sh local_conf.json >> $LOG
 
-echo "Done!"
+echo "Done! \n" >> $LOG
