@@ -2,11 +2,22 @@
 
 echo "Starting daemon..."
 
-FOLDER="$1/bin"
+echo "Change to folder $1..."
 
-echo "Change to folder $FOLDER..."
+cd $1
 
-cd $FOLDER
+echo "Actual folder:"
+
+pwd
+
+echo "Reseting concentrator..."
+
+./driver/reset_lgw.sh stop
+./driver/reset_lgw.sh start
+
+echo "Change to folder $2..."
+
+cd $2
 
 echo "Actual folder:"
 
@@ -14,4 +25,4 @@ pwd
 
 echo "Runnig lora_pkt_fwd..."
 
-./lora_pkt_fwd
+lora_pkt_fwd

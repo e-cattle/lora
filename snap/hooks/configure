@@ -12,9 +12,13 @@ cd $SNAP
 
 pwd >> $LOG
 
-./bin/update_gwid.sh ./bin/local_conf.json >> $LOG
+echo "Copping configuration files..." >> $LOG
 
-./driver/reset_lgw.sh stop >> $LOG
-./driver/reset_lgw.sh start >> $LOG
+cp -f bin/global_conf.json $SNAP_DATA/
+cp -f bin/local_conf.json $SNAP_DATA/
+
+echo "Updating Gateway ID..." >> $LOG
+
+./bin/update_gwid.sh $SNAP_DATA/local_conf.json >> $LOG
 
 echo "Done! \n" >> $LOG

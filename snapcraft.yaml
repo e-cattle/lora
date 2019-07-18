@@ -14,7 +14,7 @@ environment:
 
 apps:
   forwarder:
-    command: ./bin/bootstrap.sh $SNAP
+    command: ./bin/bootstrap.sh $SNAP $SNAP_DATA
     daemon: simple
     restart-condition: always
     plugs: [home,network,network-bind,spi]
@@ -51,4 +51,5 @@ parts:
     override-build: |
       cp -f ./bootstrap.sh $SNAPCRAFT_PRIME/bin/
       chmod a+x $SNAPCRAFT_PRIME/bin/bootstrap.sh
+      chmod a+w $SNAPCRAFT_PRIME/bin/local_conf.json
       cp -f ./global_conf.json $SNAPCRAFT_PRIME/bin/
