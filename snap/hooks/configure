@@ -12,6 +12,9 @@ cd $SNAP
 
 pwd >> $LOG
 
-./update_gwid.sh local_conf.json >> $LOG
+./bin/update_gwid.sh ./bin/local_conf.json >> $LOG
+
+./driver/reset_lgw.sh stop >> $LOG
+./driver/reset_lgw.sh start >> $LOG
 
 echo "Done! \n" >> $LOG

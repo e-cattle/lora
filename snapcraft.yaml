@@ -14,14 +14,14 @@ environment:
 
 apps:
   forwarder:
-    command: ./lora_pkt_fwd
+    command: ./bin/bootstrap.sh $SNAP
     daemon: simple
     restart-condition: always
     plugs: [home,network,network-bind,spi]
 
 hooks:
   configure:
-    plugs: [home,network,network-bind]
+    plugs: [home,network,network-bind,spi]
 
 parts:
   driver:
@@ -41,11 +41,14 @@ parts:
     override-build: |
       export LGW_PATH="$SNAPCRAFT_PART_INSTALL/../../driver/build/libloragw"
       make all
-      cp -rf $SNAPCRAFT_PART_INSTALL/../build/lora_pkt_fwd/* $SNAPCRAFT_PRIME/
+      cp -rf $SNAPCRAFT_PART_INSTALL/../build/lora_pkt_fwd $SNAPCRAFT_PRIME/bin
+      cp -rf $SNAPCRAFT_PART_INSTALL/../../driver/build $SNAPCRAFT_PRIME/driver
   
   helper:
     plugin: nil
     source: .
     after: [forwarder]
     override-build: |
-      cp ./global_conf.json $SNAPCRAFT_PRIME/
+      cp -f ./bootstrap.sh $SNAPCRAFT_PRIME/bin/
+      chmod a+x $SNAPCRAFT_PRIME/bin/bootstrap.sh
+      cp -f ./global_conf.json $SNAPCRAFT_PRIME/bin/
