@@ -16,7 +16,7 @@ apps:
   forwarder:
     command: ./bin/bootstrap.sh $SNAP $SNAP_DATA
     daemon: simple
-    restart-condition: never
+    restart-condition: always
     plugs: [home,network,network-bind,spi]
 
 hooks:
