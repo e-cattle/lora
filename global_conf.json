@@ -1,6 +1,6 @@
 {
 	"SX1301_conf": {
-		"lorawan_public": true,
+		"lorawan_public": false,
 		"clksrc": 1,
 		"antenna_gain": 0,
 		"antenna_gain_desc": "antenna gain, in dBi",
