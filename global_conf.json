@@ -201,9 +201,9 @@
         "keepalive_interval": 10,
         "stat_interval": 30,
         "push_timeout_ms": 1000,
-        "forward_crc_valid": true,
+        "forward_crc_valid": false,
         "forward_crc_error": false,
-        "forward_crc_disabled": false,
+        "forward_crc_disabled": true,
 	"gps": false
         /* "gps_tty_path": "/dev/ttyAMA0", */
         /* "ref_latitude": 0.0, */
