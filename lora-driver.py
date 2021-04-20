@@ -29,11 +29,11 @@ data = {
     }]
 }
 
-# bigboxx = "127.0.0.1"
-bigboxx = "192.168.0.22"
+bigboxx = "127.0.0.1"
+#bigboxx = "192.168.0.22"
 api_port = 3000
 api = f"http://{bigboxx}:{api_port}/"
-rdb = redis.Redis(host="192.168.0.100")
+rdb = redis.Redis(host=bigboxx)
 
 subscribe_topic = "application/#"
 
