@@ -14,7 +14,7 @@ confinement: devmode # use 'strict' once you have the right plugs and slots
 
 apps:
   lora-driver:
-    command: ./bin/lora-driver.py
+    command: bin/lora-driver.py
     plugs: [home,network,network-bind,mount-observe,network-observe,system-observe]
 #  forwarder:
 #    command: ./bin/bootstrap.sh $SNAP $SNAP_DATA
