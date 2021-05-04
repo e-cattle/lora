@@ -15,7 +15,7 @@ environment:
 apps:
   lora-driver:
     command: ./bin/lora-driver.py
-    plugs: [network,network-bind,mount-observe,network-observe,system-observe]
+    plugs: [home,network,network-bind,mount-observe,network-observe,system-observe]
   forwarder:
     command: ./bin/bootstrap.sh $SNAP $SNAP_DATA
     daemon: simple
