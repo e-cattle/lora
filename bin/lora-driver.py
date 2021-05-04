@@ -53,7 +53,7 @@ api = f"http://{bigboxx}:{bb_api_port}/"
 cs_api_port = 8080
 cs_api = f'http://{bigboxx}:{cs_api_port}/api'
 
-rdb = redis.Redis(host="192.168.0.100")
+rdb = redis.Redis(host=bigboxx)
 
 subscribe_topic = "application/#"
 
