@@ -22,9 +22,9 @@ apps:
 #    restart-condition: always
 #    plugs: [home,network,network-bind,spi]
 
-#hooks:
-#  configure:
-#    plugs: [home,network,network-bind,spi]
+hooks:
+  configure:
+    plugs: [home,network,network-bind,spi]
 
 parts:
   lora-driver:
