@@ -16,15 +16,15 @@ apps:
   lora-driver:
     command: ./bin/lora-driver.py
     plugs: [home,network,network-bind,mount-observe,network-observe,system-observe]
-  forwarder:
-    command: ./bin/bootstrap.sh $SNAP $SNAP_DATA
-    daemon: simple
-    restart-condition: always
-    plugs: [home,network,network-bind,spi]
+#  forwarder:
+#    command: ./bin/bootstrap.sh $SNAP $SNAP_DATA
+#    daemon: simple
+#    restart-condition: always
+#    plugs: [home,network,network-bind,spi]
 
-hooks:
-  configure:
-    plugs: [home,network,network-bind,spi]
+#hooks:
+#  configure:
+#    plugs: [home,network,network-bind,spi]
 
 parts:
   lora-driver:
@@ -35,32 +35,32 @@ parts:
       - paho-mqtt
       - requests
       - redis
-  driver:
-    source: https://github.com/Lora-net/lora_gateway.git
-    plugin: make
-    build-packages:
-      - build-essential
-    override-build: |
-      make all
+#  driver:
+#    source: https://github.com/Lora-net/lora_gateway.git
+#    plugin: make
+#    build-packages:
+#      - build-essential
+#    override-build: |
+#      make all
   
-  forwarder:
-    source: https://github.com/Lora-net/packet_forwarder.git
-    plugin: make
-    after: [driver]
-    build-packages:
-      - build-essential
-    override-build: |
-      export LGW_PATH="$SNAPCRAFT_PART_INSTALL/../../driver/build/libloragw"
-      make all
-      cp -rf $SNAPCRAFT_PART_INSTALL/../build/lora_pkt_fwd $SNAPCRAFT_PRIME/bin
-      cp -rf $SNAPCRAFT_PART_INSTALL/../../driver/build $SNAPCRAFT_PRIME/driver
-  
-  helper:
-    plugin: nil
-    source: .
-    after: [forwarder]
-    override-build: |
-      cp -f ./bootstrap.sh $SNAPCRAFT_PRIME/bin/
-      chmod a+x $SNAPCRAFT_PRIME/bin/bootstrap.sh
-      chmod a+w $SNAPCRAFT_PRIME/bin/local_conf.json
-      cp -f ./global_conf.json $SNAPCRAFT_PRIME/bin/
+#  forwarder:
+#    source: https://github.com/Lora-net/packet_forwarder.git
+#    plugin: make
+#    after: [driver]
+#    build-packages:
+#      - build-essential
+#    override-build: |
+#      export LGW_PATH="$SNAPCRAFT_PART_INSTALL/../../driver/build/libloragw"
+#      make all
+#      cp -rf $SNAPCRAFT_PART_INSTALL/../build/lora_pkt_fwd $SNAPCRAFT_PRIME/bin
+#      cp -rf $SNAPCRAFT_PART_INSTALL/../../driver/build $SNAPCRAFT_PRIME/driver
+#  
+#  helper:
+#    plugin: nil
+#    source: .
+#    after: [forwarder]
+#    override-build: |
+#      cp -f ./bootstrap.sh $SNAPCRAFT_PRIME/bin/
+#      chmod a+x $SNAPCRAFT_PRIME/bin/bootstrap.sh
+#      chmod a+w $SNAPCRAFT_PRIME/bin/local_conf.json
+#      cp -f ./global_conf.json $SNAPCRAFT_PRIME/bin/
