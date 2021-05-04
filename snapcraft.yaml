@@ -9,8 +9,8 @@ description: |
 grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: devmode # use 'strict' once you have the right plugs and slots
 
-environment:
-  SNAPCRAFT_ENABLE_DEVELOPER_DEBUG: "yes"
+#environment:
+#  SNAPCRAFT_ENABLE_DEVELOPER_DEBUG: "yes"
 
 apps:
   lora-driver:
