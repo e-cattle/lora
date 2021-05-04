@@ -14,11 +14,11 @@ pwd >> $LOG
 
 echo "Copping configuration files..." >> $LOG
 
-cp -f bin/global_conf.json $SNAP_DATA/
-cp -f bin/local_conf.json $SNAP_DATA/
+#cp -f bin/global_conf.json $SNAP_DATA/
+#cp -f bin/local_conf.json $SNAP_DATA/
 
 echo "Updating Gateway ID..." >> $LOG
 
-./bin/update_gwid.sh $SNAP_DATA/local_conf.json >> $LOG
+#./bin/update_gwid.sh $SNAP_DATA/local_conf.json >> $LOG
 
 echo "Done! \n" >> $LOG
