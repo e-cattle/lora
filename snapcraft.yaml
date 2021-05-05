@@ -16,7 +16,7 @@ apps:
   lora-driver:
     command: ./bin/lora-driver.py
     daemon: simple
-    restart-condition: always
+    restart-condition: never 
     plugs: [home,network,network-bind,mount-observe,network-observe,system-observe]
     
   forwarder:
