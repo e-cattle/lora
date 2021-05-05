@@ -14,10 +14,10 @@ environment:
 
 apps:
   lora-driver:
-    command: ./bin/lora-driver.py
+    command: bin/lora-driver.py
     daemon: simple
     restart-condition: never 
-    plugs: [home,network,network-bind,mount-observe,network-observe,system-observe]
+    plugs: [network,network-bind,mount-observe,network-observe,system-observe]
     
   forwarder:
     command: ./bin/bootstrap.sh $SNAP $SNAP_DATA
